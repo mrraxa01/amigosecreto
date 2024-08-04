@@ -5,5 +5,12 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "scripts": {
+    "dev": "yarn nodemon ./src/index.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
