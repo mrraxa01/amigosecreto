@@ -1,17 +1,24 @@
 const express = require('express');
-
+const routes = require('./routes/routes');
+const { mongoose } = require('mongoose');
+mongoose.set('strictQuery', true);
 const app = express();
 
 app.use(express.json());
+app.use(routes);
 
-app.get('/:nome', (request, response) => {
-    return response.send("Olá Mundo, " + `${request.params.nome}!`);
-});
+require('dotenv').config();
 
-app.post('/participante', (request, response)=>{
-    console.log(request.body);
-    const { nome } = request.body;
-    return response.json({"mensagem": `Olá Mundo ${nome}`});
-})
+const url_DB  = process.env.DB_STRING_CONNECTION;
+
+
+mongoose.connect(url_DB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Conectado ao MongoDB!');
+  })
+  .catch((err) => {
+    console.error('Erro ao conectar ao MongoDB:', err);
+  });
+
 
 app.listen(3333);
