@@ -64,5 +64,22 @@ module.exports = {
             "status": 200,
             "participante": Participante
         })
+    },
+
+    async getAll(request, response){
+        try {
+            let participantes = await ParticipanteRepository.getAll();
+            return response.json({
+                "mensagem" : "Sucesso! Lista de Participantes:",
+                "status" : 200,
+                "grupo" : participantes
+            });
+        } catch (err) {
+            return response.json({
+                "mensagem": "Erro " + err,
+                "status" : 500,
+                "idGrupo": null
+            });
+        }
     }
 }

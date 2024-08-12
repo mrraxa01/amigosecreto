@@ -49,6 +49,15 @@ module.exports = {
         return null;
     },
 
+    async getAll(){
+        try {
+            return await Participante.find();
+        } catch (error) {
+            console.log("Erro " + error);
+        }
+        return null;
+    },
+
     async delete(_id){
         try {
             const returnParticipante = await Participante.deleteOne({_id : _id});

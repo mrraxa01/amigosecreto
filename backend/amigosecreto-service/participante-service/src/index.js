@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./routes/routes');
+const routes = require('./Routes/routes');
 const { mongoose } = require('mongoose');
 mongoose.set('strictQuery', true);
 const app = express();
